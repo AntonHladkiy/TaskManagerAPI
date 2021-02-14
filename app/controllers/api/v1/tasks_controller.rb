@@ -13,7 +13,6 @@ module Api::V1
 
     def create
       @task = Task.new(task_params)
-      @task.done=false;
       if @task.save
         render json: @task, status: :created
       else
@@ -40,7 +39,7 @@ module Api::V1
     def task_params
       params
         .require(:task)
-        .permit(:title, :description, :dueDate, :priority)
+        .permit(:title, :description, :dueDate, :priority,:done)
     end
 
   end
