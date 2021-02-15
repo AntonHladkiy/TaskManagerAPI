@@ -22,7 +22,8 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: localhost
   username: postgres
-  password: anton3015
+  password: password
+  timeout: 5000
 development:
   <<: *default
   database: TaskManagerAPI_development
@@ -84,5 +85,5 @@ test:
 production:
   <<: *default
   database: TaskManagerAPI_production
-  username: TaskManagerAPI
-  password: <%= ENV['TASKMANAGERAPI_DATABASE_PASSWORD'] %>
+  #username: TaskManagerAPI
+  #password: <%= ENV['TASKMANAGERAPI_DATABASE_PASSWORD'] %>
