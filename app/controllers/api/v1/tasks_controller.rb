@@ -1,5 +1,6 @@
 module Api::V1
   class TasksController < ApplicationController
+    before_action :authenticate_user!
 
     def index
       @task = Task.all
