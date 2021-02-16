@@ -1,9 +1,8 @@
 module Api::V1
-  class TasksController < ApplicationController
-    before_action :authenticate_user!
-
+  class TasksController < ApiController
     def index
-      @task = Task.all
+      @task = current_user.tasks
+      p @task
       render json: @task
     end
 
@@ -13,7 +12,7 @@ module Api::V1
     end
 
     def create
-      @task = Task.new(task_params)
+      @task = current_user.tasks.create(task_params)
       if @task.save
         render json: @task, status: :created
       else

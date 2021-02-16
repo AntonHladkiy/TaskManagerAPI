@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  belongs_to :user
   validates :title, presence: true
   validates :priority, numericality: { greater_than: 0 }
   validate :due_date_cannot_be_in_past
