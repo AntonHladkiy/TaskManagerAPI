@@ -1,4 +1,4 @@
-class RegistrationsController < Devise::RegistrationsController
+class RegistrationsController < Devise::RegistrationsController Devise::ConfirmationsController
   respond_to :json
 def create
     @user = User.new(sign_up_params)
