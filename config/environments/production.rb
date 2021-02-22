@@ -67,10 +67,10 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     user_name:      ENV['EMAIL'],
     password:       ENV['PASSWORD'],
-    domain:         'horoku.com',
+    domain:         'gmail.com',
     address:       'smtp.gmail.com',
-    port:          '587',
-    authentication: :plain,
+    port:          587,
+    authentication: :login,
     #enable_starttls_auto: true
   }
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
