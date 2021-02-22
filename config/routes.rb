@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :tasks
       post :auth, to: 'authentication#create'
       get  '/auth' => 'authentication#fetch'
-      devise_for :users, controllers: { registrations: 'registrations',confirmations: 'confirmations' }
+      devise_for :users, controllers: { registrations: 'registrations' }
     end
   end
 end
