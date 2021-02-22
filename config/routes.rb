@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers:{registrations: 'registrations',confirmations: 'confirmations'}
+  devise_for :users, controllers:{confirmations: 'confirmations'}
   namespace :api do
     namespace :v1 do
       resources :tasks
       post :auth, to: 'authentication#create'
       get  '/auth' => 'authentication#fetch'
-      devise_for :users
+      devise_for :users, controllers: { registrations: 'registrations'}
     end
   end
 end
