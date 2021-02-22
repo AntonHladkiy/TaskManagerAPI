@@ -8,6 +8,8 @@ class Api::V1::AuthenticationController < ApiController
       else
         render json: { errors: 'invalid' }
       end
+    else
+      render json: { errors: 'invalid' }
     end
   end
   def fetch
