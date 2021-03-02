@@ -6,11 +6,11 @@ class Api::V1::AuthenticationController < ApiController
       if user&.valid_password?(params[:password])
         render json: { token: JsonWebToken.encode(sub: user.id) }
       else
-        render json: { errors: 'invalid' }
+        render json: { errors: 'invalid'}, status: 401
       end
     else
-        render json: { errors: 'unconfirmed' }
-    end
+        render json: { errors: 'unconfirmed'}, status: 401
+     end
   end
   def fetch
     render json: current_user
