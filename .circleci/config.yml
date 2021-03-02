@@ -16,5 +16,10 @@ jobs:
             gem install bundler
             bundle update --ruby
             bundle update --bundler
+      - run:
+          command: |
+            export RAILS_ENV="test"
+            export RACK_ENV="test"
+            bundle exec rake db:create db:migrate --trace
       - run: mkdir ~/rspec
       - run: bundle exec rake spec
