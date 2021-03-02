@@ -21,14 +21,14 @@ jobs:
       - image: cimg/ruby:2.7-node
       - image: circleci/postgres:9.5-alpine
         environment:
-          POSTGRES_USER: milestep
+          POSTGRES_USER: postgres
           POSTGRES_DB: TaskManagerAPI_test
           POSTGRES_PASSWORD: "password"
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
       PGHOST: 127.0.0.1
-      PGUSER: milestep
+      PGUSER: postgres
       PGPASSWORD: "password"
       RAILS_ENV: test
     steps:
