@@ -5,21 +5,17 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.6.3-stretch-node
-    executor: ruby/default
+      - image: ruby:2.3
+      - image: postgres:9.4.1
+        environment:
+          POSTGRES_USER: root
+
+    working_directory: /home/ubuntu/cci-demo-rails
     steps:
       - checkout
-      - run:
-          name: install dependencies
-          command: |
-            gem update --system
-            gem install bundler
-            bundle update --ruby
-            bundle update --bundler
-      - run:
-          command: |
-            export RAILS_ENV="test"
-            export RACK_ENV="test"
-            bundle exec rake db:create db:migrate --trace
-      - run: mkdir ~/rspec
+      - run: apt-get update -qq && apt-get install -y build-essential nodejs
+      - run: bundle install
+      - run: bundle exec rake db:create db:schema:load --trace
+      - run: bundle exec rake db:migrate
       - run: bundle exec rake spec
+
