@@ -34,6 +34,10 @@ RSpec.describe 'POST /api/v1/auth', type: :request do
 
   context 'when login params are incorrect' do
     before do
+      if(User.find_by(email: params[:email]).nil?)
+        p "check"
+        Fabricate(:user)
+      end
       post url, params: wrong_params
     end
 
