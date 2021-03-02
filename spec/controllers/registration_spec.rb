@@ -5,10 +5,8 @@ RSpec.describe 'POST /api/v1/users', type: :request do
   let(:url) { '/api/v1/users' }
   let(:params) do
     {
-      user: {
         email: "test@gmail.com",
         password: "password"
-      }
     }
   end
 
