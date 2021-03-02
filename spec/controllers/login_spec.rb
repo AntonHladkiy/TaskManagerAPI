@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'POST /api/v1/auth', type: :request do
-  let(:user) {Fabricate(:user)}
   let(:url) { '/api/v1/auth' }
   let(:params) do
     {
@@ -18,6 +17,9 @@ RSpec.describe 'POST /api/v1/auth', type: :request do
 
   context 'when params are correct' do
     before do
+      if(User.find_by(email: params[:email]).nil?)
+        Fabricate(:user)
+      end
       post url, params: params
     end
 
