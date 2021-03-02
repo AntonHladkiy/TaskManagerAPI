@@ -16,6 +16,5 @@ jobs:
             gem install bundler
             bundle update --ruby
             bundle update --bundler
-      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
       - run: mkdir ~/rspec
-      - run: rake spec
+      - run: bundle exec rake spec
