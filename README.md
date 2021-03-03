@@ -1,4 +1,4 @@
-# README
+# README [![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://circleci.com/gh/circleci/circleci-docs)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
