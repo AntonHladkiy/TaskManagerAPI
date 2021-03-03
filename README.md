@@ -1,4 +1,4 @@
-# README [![CircleCI](https://circleci.com/gh/AntonHladkiy/TaskManagerAPI.svg?style=svg)](https://circleci.com/gh/circleci/circleci-docs)
+# README [![CircleCI](https://circleci.com/gh/AntonHladkiy/TaskManagerAPI.svg?style=svg)](https://circleci.com/gh/AntonHladkiy/TaskManagerAPI)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
