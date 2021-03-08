@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Task < ApplicationRecord
   belongs_to :user
   validates :title, presence: true
@@ -5,8 +7,6 @@ class Task < ApplicationRecord
   validate :due_date_cannot_be_in_past
 
   def due_date_cannot_be_in_past
-    if dueDate.present? && dueDate < Date.today
-      errors.add(:dueDate, "can't be in the past")
-    end
+    errors.add(:dueDate, "can't be in the past") if dueDate.present? && dueDate < Date.today
   end
 end

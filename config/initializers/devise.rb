@@ -1,4 +1,4 @@
-  # frozen_string_literal: true
+# frozen_string_literal: true
 
 # Assuming you have not yet modified this file, each configuration option below
 # is set to its default value. Note that some are commented out while others
@@ -277,11 +277,11 @@ Devise.setup do |config|
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
   #
-   config.warden do |manager|
-  #   manager.intercept_401 = false
+  config.warden do |manager|
+    #   manager.intercept_401 = false
     manager.strategies.add :jwt, Devise::Strategies::JWT
     manager.default_strategies(scope: :user).unshift :jwt
-   end
+  end
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
@@ -315,16 +315,17 @@ Devise.setup do |config|
         def valid?
           request.headers['Authorization'].present?
         end
+
         def authenticate!
           token = request.headers.fetch('Authorization', '').split(' ').last
           p token
           payload = JsonWebToken.decode(token)
           success! User.find(payload['sub'])
         rescue ::JWT::ExpiredSignature
-          p "fail"
+          p 'fail'
           fail! 'Auth token has expired'
         rescue ::JWT::DecodeError
-          p "fails"
+          p 'fails'
           fail! 'Auth token is invalid'
         end
       end

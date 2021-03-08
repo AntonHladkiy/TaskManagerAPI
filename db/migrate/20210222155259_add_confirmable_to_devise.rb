@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddConfirmableToDevise < ActiveRecord::Migration[6.1]
   def up
     add_column :users, :confirmation_token, :string
@@ -12,9 +14,9 @@ class AddConfirmableToDevise < ActiveRecord::Migration[6.1]
     # All existing user accounts should be able to log in after this.
   end
 
-  #def down
+  # def down
   #  remove_index :users, :confirmation_token
-  #remove_columns :users, :confirmation_token, :confirmed_at, :confirmation_sent_at
-    # remove_columns :users, :unconfirmed_email # Only if using reconfirmable
-  #end
+  # remove_columns :users, :confirmation_token, :confirmed_at, :confirmation_sent_at
+  # remove_columns :users, :unconfirmed_email # Only if using reconfirmable
+  # end
 end
